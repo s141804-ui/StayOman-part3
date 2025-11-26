@@ -1,0 +1,88 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+    crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
+    <title> StayOman Home</title>
+    <script>
+        function updateBanner() {
+            var banner = document.getElementById("bannerText");
+            var now = new Date();
+
+            var date = now.toDateString();
+            var time = now.toLocaleTimeString();
+
+            banner.textContent = "Welcome to StayOman website! Today is " + date + ", and the time is " + time;
+        }
+
+        setInterval(updateBanner, 1000); // update every 1 second
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+            <div class="container-fluid">
+                <a class="navbar-brand align-items-center">
+                <img src="logo.png" alt="logo" width="40" height="40" class="me-2">
+                <span class="fw-bold">StayOman</span>
+                </a>
+                <ul class ="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link " href="aboutUs.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="allStays.html">all Stays</a></li>
+                    <li class="nav-item"><a class="nav-link" href="addStay.html">Add your Stay</a></li>
+                    <li class="nav-item"><a class="nav-link" href="review.html">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Blog.html">Travel tips</a></li>
+                    <li class="nav-item"><a class="nav-link" href="questionnaire.html">Questionnaire</a></li>
+                    <li class="nav-item"><a class="nav-link" href="calculate.html">Calculate</a></li>
+                    <li class="nav-item"><a class="nav-link" href="fun.html">Fun Page</a></li>
+                    <li class="nav-item"><a class="nav-link disabled" href="details.html">Details</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="container text-center mt-5">
+           <h1 class="fw-bold text-success">StayOman</h1> 
+           <h3 class="fw-bold text-success">Your Gide To Rest Houses</h3>
+        </div>
+        <br/>
+
+        <div class="text-center mt-3">
+            <img id="autoImage" src="liven.jpeg" class="img-fluid rounded" width="300" height="300"> 
+        </div>
+
+        <script>
+            var images = ["liven.jpeg", "orchide.jpg", "Alluban.jpg"];
+            var index = 0;
+
+            function changeImage() {
+                index = (index + 1) % images.length;  // cycle through images
+                document.getElementById("autoImage").src = images[index];
+            }
+
+            setInterval(changeImage, 3000); // change every 3 seconds
+        </script>
+
+                    
+        <div class="mt-4 bg-success text-white p-2">
+            <marquee>
+                <span id="bannerText">Welcome to StayOman!</span>
+            </marquee>
+        </div>
+                    
+                
+    </section>
+
+    <footer class="bg-success text-white text-center mt-5">
+    <p class="mb-1"> 2025 StayOman — All Rights Reserved</p>
+    <div>Follow us:
+        <a href="#" class="text-white ms-2">Instagram</a> |
+        <a href="#" class="text-white ms-2">Twitter</a>
+    </div>
+    </footer>
+</body>

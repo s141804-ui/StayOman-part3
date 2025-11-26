@@ -1,0 +1,117 @@
+<head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
+    <script>
+    
+    //initialize prices object
+     var resortPrices = {
+        "liven1": 240,
+        "orchide1": 200,
+        "Alluban1": 160
+    };
+    var selectedResort=null;
+    //function to select the price of choosen rest house name outomaticaly
+    function selectResort(name) {
+    selectedResort = name;
+    document.getElementById("chosenResort").innerText = name;
+}
+
+
+//function to calculate the price
+function calculateTotal() {
+    if(!selectedResort){
+        alert("choose resst house first!");
+        return;
+    }
+    var days = parseInt(document.getElementById("days").value);
+   
+
+    if(isNaN(days) || days<=0){ 
+        alert("Please enter a valid number of days"); 
+        return; 
+    }
+    
+    var total = days * resortPrices[selectedResort];
+    if(days>3){var stayDiscount=total*0.08
+        total-=stayDiscount;
+    }
+    if(document.getElementById("None").checked) total+=0.0;
+    if(document.getElementById("Friday").checked) total+=0.05;
+    if(document.getElementById("Saturday").checked) total+=0.03;
+
+    total+= total*0.05;
+
+
+    document.getElementById("result").value = total.toFixed(2) + " OMR";
+
+}
+</script>
+    <title> StayOman Calculate</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+            <div class="container-fluid">
+                <a class="navbar-brand align-items-center">
+                <img src="logo.png" alt="logo" width="40" height="40" class="me-2">
+                <span class="fw-bold">StayOman</span>
+                </a>
+            <ul class ="navbar-nav">
+                <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link " href="aboutUs.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="allStays.html">all Stays</a></li>
+                <li class="nav-item"><a class="nav-link" href="addStay.html">Add your Stay</a></li>
+                <li class="nav-item"><a class="nav-link" href="review.html">Reviews</a></li>
+                <li class="nav-item"><a class="nav-link" href="Blog.html">Travel tips</a></li>
+                <li class="nav-item"><a class="nav-link " href="questionnaire.html">Questionnaire</a></li>
+                <li class="nav-item"><a class="nav-link active" href="calculate.html">Calculate</a></li>
+                <li class="nav-item"><a class="nav-link" href="fun.html">Fun Page</a></li>
+               <li class="nav-item"><a class="nav-link disabled" href="details.html">Details</a></li>
+            </ul> 
+            </div>
+        </nav>
+    </header>
+
+    <br/>
+    <br/>
+    <section class="container mt-4 text-center">
+        <h3>Offers and Taxes</h3>
+        <p>tax 5% <br>weekend Days: Friday 5% , Saturday 3% <br> Offers: more than 3 days (discount 8%)</p>
+        <h3>Choose rest house</h3><br>
+        <button class="btn btn-secondary btn-sm" onclick="selectResort('liven1')">liven</button>
+        <button class="btn btn-secondary btn-sm" onclick="selectResort('orchide1')">orchide</button>
+        <button class="btn btn-secondary btn-sm"  onclick="selectResort('Alluban1')">Alluban</button>
+        <br>
+        <br>
+        <p>Selected rest house:<span id="chosenResort">not choosen</span></p>
+
+        <br><br>
+        <label>Number of days:<input type="text" id="days"><br><br></label> 
+        <h4>Select:</h4>
+        <input type="radio" name="choose" id="None"> Normal day
+        <input type="radio" name="choose"id="Friday"> Friday (5%)
+        <input type="radio" name="choose" id="Saturday"> Saturday(3%)
+        <br>
+        <br>
+        <input type="button" value="Calculate the cost" onclick="calculateTotal()" class="btn btn-success"><br/><br/>
+        <input type="text" id="result" readonly>
+
+
+    </section>
+    <br/>
+    <br/>
+
+    <footer class="bg-success text-white text-center mt-5">
+    <p class="mb-1"> 2025 StayOman — All Rights Reserved</p>
+    <div>Follow us:
+        <a href="#" class="text-white ms-2">Instagram</a> |
+        <a href="#" class="text-white ms-2">Twitter</a>
+    </div>
+    </footer>
+</body>

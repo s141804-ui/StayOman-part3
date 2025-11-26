@@ -1,0 +1,119 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+    crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
+    <title> StayOman All Stays</title>
+    <script>
+
+    //Constructor for Rest Houses object
+    function Stay(image,name, location,details) {
+        this.image =image;
+        this.name = name;
+        this.location = location;
+        this.details = details
+    }
+
+
+    //Arrays with initial values of the stays
+    var stays = [
+        new Stay("<img src='liven.jpeg' width='300px' height='300px' class='rounded'>","Liven Villa", "AlShkharaa", "<a href='details.html#0'>details</a>"),
+        new Stay("<img src='orchide.jpg' width='300px' height='300px' class='rounded'>","Orchid Chalet", "Barka",  "<a href='details.html#1'>details</a>"),
+        new Stay("<img src='Alluban.jpg' width='300px' height='300px' class='rounded'>","Alhuban", "Barka",  "<a href='details.html#2'>details</a>")
+    ];
+
+
+    //function to display the data into table
+    function displayStays() {
+        var body = document.getElementById("staysBody");
+        body.innerHTML = "";
+        
+        for (var i = 0; i < stays.length; i++) {
+            body.innerHTML += 
+                "<tr><td>" + stays[i].image + 
+                "</td><td>" + stays[i].name + 
+                "</td><td>" + stays[i].location +
+                "</td><td>" + stays[i].details; +
+                "</td></tr>";
+        }
+    }
+    //function to search for astay with its name 
+    function searchStay() {
+        var searchWord = document.getElementById("searchText").value.toLowerCase();
+        var body = document.getElementById("staysBody");
+        body.innerHTML = "";
+
+        for (var i = 0; i < stays.length; i++) {
+            if (stays[i].name.toLowerCase().includes(searchWord)) {
+                body.innerHTML += 
+                     "<tr><td>" + stays[i].image + 
+                    "</td><td>" + stays[i].name + 
+                    "</td><td>" + stays[i].location +
+                    "</td><td>" + stays[i].details; +
+                    "</td></tr>";
+                }
+        }
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+            <div class="container-fluid">
+                <a class="navbar-brand align-items-center">
+                <img src="logo.png" alt="logo" width="40" height="40" class="me-2">
+                <span class="fw-bold">StayOman</span>
+                </a>
+                <ul class ="navbar-nav">
+                <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="aboutUs.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link active" href="allStays.html">all Stays</a></li>
+                <li class="nav-item"><a class="nav-link" href="addStay.html">Add your Stay</a></li>
+                <li class="nav-item"><a class="nav-link" href="review.html">Reviews</a></li>
+                <li class="nav-item"><a class="nav-link" href="Blog.html">Travel tips</a></li>
+                <li class="nav-item"><a class="nav-link" href="questionnaire.html">Questionnaire</a></li>
+                <li class="nav-item"><a class="nav-link" href="calculate.html">Calculate</a></li>
+                <li class="nav-item"><a class="nav-link" href="fun.html">Fun Page</a></li>
+                <li class="nav-item"><a class="nav-link disabled" href="details.html">Details</a></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+    <br/>
+    <br/>
+    <div class="container mt-4 text-center">
+        <h5 class="mt-4">Search Stay</h5>
+        <input id="searchText" class="form-control" placeholder="Enter name">
+        <button onclick="searchStay()" class="btn btn-outline-success mt-2">Search</button>
+
+        <h4 class="mt-4">Rest Houses Data</h4>
+        <table class="table table-bordered text-center">
+            <thead class="table-success">
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Price</th>
+                <th>details</th>
+            </tr>
+            </thead>
+            <tbody id="staysBody"></tbody>
+        </table>
+    </div>
+
+    <script>
+    //call display function
+    displayStays();
+    </script>
+
+    <footer class="bg-success text-white text-center mt-5">
+    <p class="mb-1"> 2025 StayOman — All Rights Reserved</p>
+    <div>Follow us:
+        <a href="#" class="text-white ms-2">Instagram</a> |
+        <a href="#" class="text-white ms-2">Twitter</a>
+    </div>
+    </footer>
+</body>
